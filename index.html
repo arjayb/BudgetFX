@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BudgetFX — Multi-Currency Budget Planner</title>
+<meta name="description" content="Track income and expenses across multiple currencies, auto-converted to one home currency, saved in your browser.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="ledger-book">
+    <header class="ledger-cover">
+      <h1>BudgetFX</h1>
+      <p>one budget, converted across every currency it touches</p>
+      <div class="home-currency-picker">
+        <label for="home-currency">Home currency</label>
+        <select id="home-currency">
+          <option value="PHP" selected>PHP</option>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+          <option value="AED">AED</option>
+          <option value="SGD">SGD</option>
+        </select>
+      </div>
+    </header>
+
+    <section class="summary-strip" id="summary-strip">
+      <div class="summary-cell">
+        <span class="summary-label">Income</span>
+        <span class="summary-value" id="sum-income">0.00</span>
+      </div>
+      <div class="summary-cell">
+        <span class="summary-label">Expenses</span>
+        <span class="summary-value" id="sum-expense">0.00</span>
+      </div>
+      <div class="summary-cell balance">
+        <span class="summary-label">Balance</span>
+        <span class="summary-value" id="sum-balance">0.00</span>
+      </div>
+    </section>
+
+    <form id="entry-form" class="entry-form">
+      <input id="entry-desc" type="text" placeholder="Description" required>
+      <input id="entry-amount" type="number" step="0.01" placeholder="Amount" required>
+      <select id="entry-currency">
+        <option value="PHP">PHP</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+        <option value="AED">AED</option>
+        <option value="SGD">SGD</option>
+      </select>
+      <select id="entry-type">
+        <option value="income">Income</option>
+        <option value="expense" selected>Expense</option>
+      </select>
+      <button type="submit">Add entry</button>
+    </form>
+    <p id="status-line" class="status-line">Entries are converted to your home currency and saved in this browser.</p>
+
+    <table class="ledger-table">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Original</th>
+          <th>In home currency</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="entries-body">
+        <tr class="empty-row"><td colspan="4">No entries yet — add your first one above.</td></tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer class="footer">
+    <p>Conversion via a free public exchange-rate API. Entries are stored only in this browser (localStorage) — nothing is sent to a server. <a href="https://github.com/arjayb/BudgetFX" target="_blank" rel="noopener">Source</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
